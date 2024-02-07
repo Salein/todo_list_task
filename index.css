@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin: 1em;
+}
+
+#taskForm {
+    text-align: center;
+}
+
+.wrapper {
+    display: flex;
+    margin: 2em;
+    justify-content: space-around;
+}
+
+h2, h3 {
+    font-size: 24px;
+}
