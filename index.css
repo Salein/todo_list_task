@@ -1,23 +1,101 @@
-body {
-    margin: 0;
-    padding: 0;
-}
-
-h1 {
-    text-align: center;
-    margin: 1em;
-}
-
-#taskForm {
-    text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .wrapper {
-    display: flex;
-    margin: 2em;
-    justify-content: space-around;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(125deg, #1e7f80, #3edb4d);
+  padding: 20px;
 }
 
-h2, h3 {
-    font-size: 24px;
+.wrapperTodo {
+  width: 100%;
+  max-width: 500px;
+  background-color: aliceblue;
+  margin: 10px auto 20px;
+  padding: 20px 30px 80px;
+  border-radius: 10px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.wrapperTasks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 40px;
+  padding-left: 20px;
+  margin-top: 20px;
+  background-color: wheat;
+}
+
+input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 5px;
+}
+
+button {
+  border: none;
+  outline: none;
+  padding: 10px;
+  background: rgb(184, 251, 29);
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+ul li {
+  list-style: none;
+  padding: 10px 10px 10px 40px;
+  cursor: pointer;
+  position: relative;
+  margin: 10px 10px 10px 10px;
+}
+
+ul li::before {
+  content: "";
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 5px;
+  left: 5px;
+  border-radius: 40%;
+  background-image: url(/unchecked.png);
+  background-size: cover;
+  background-position: center;
+}
+
+ul li.checked {
+  text-decoration: line-through;
+}
+
+ul li.checked::before {
+  background-image: url(/check.png);
+}
+
+ul li span {
+  position: absolute;
+  right: 0;
+  top: 5;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  font-weight: bold;
+}
+
+ul li span:hover {
+  border: 2px solid red;
+  border-radius: 4px;
+  background: red;
+}
+
+.sortTasks {
+  margin: 20px 10px 20px 50px;
 }

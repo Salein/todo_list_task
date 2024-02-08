@@ -1,19 +1,39 @@
-const taskForm = document.getElementById("taskForm")
-const valueTask = document.getElementById("valueTask")
-const taskPending = document.getElementById("taskPending")
-const taskComplete = document.getElementById("taskComplete")
-const pending = []
+const tasks = document.getElementById("tasks")
+const inputTask = document.getElementById("inputTask")
+const arrSort = []
 
-taskForm.addEventListener("submit", (event) => {
-  event.preventDefault()
+function addTask() {
+  let li = document.createElement("li")
+  li.innerHTML = inputTask.value
+  tasks.appendChild(li)
+  arrSort.push(li)
+  inputTask.value = ""
+  let span = document.createElement("span")
+  span.innerHTML = "X"
+  li.appendChild(span)
+}
 
-  const task = valueTask.value.trim()
-  
-  const newTask = document.createElement("li")
-  newTask.innerText = task
+function sortTasks() {
+  arrSort.sort((a, b) => {
+    if (a.classList.contains("checked") && !b.classList.contains("checked")) {
+      return 1
+    } else if (
+      !a.classList.contains("checked") &&
+      b.classList.contains("checked")
+    ) {
+      return -1
+    } else {
+      return a.innerText.localeCompare(b.innerText)
+    }
+  })
+  tasks.innerHTML = ""
+  arrSort.forEach((task) => tasks.appendChild(task))
+}
 
-  taskPending.appendChild(newTask)
-
-  valueTask.value = ""
-
+tasks.addEventListener("click", (event) => {
+  if (event.target.tagName === "LI") {
+    event.target.classList.toggle("checked")
+  } else if (event.target.tagName === "SPAN") {
+    event.target.parentElement.remove()
+  }
 })
